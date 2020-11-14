@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 
 // 添加antd库, 用于承载echarts, 这个是引入的语法, 详见nodejs的文档
 import { Layout, Menu, Breadcrumb } from 'antd'
-// 添加echarts库, 在这里我们用的是echarts-for-react
-import ReactEcharts from "echarts-for-react"
+
+// 引入名为 Charts 的 Component, 这是数据可视化的主要工作
+import Charts from './component/Charts'
 
 // 引入utils文件, 取得获取数据的"伪"后端函数库
 import { getCountOfCommits } from './utils'
@@ -62,34 +63,8 @@ function App() {
                         <Breadcrumb.Item>Total</Breadcrumb.Item>
                     </Breadcrumb>
                     <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                        <ReactEcharts
-                            option={{
-                                title: {
-                                    text: 'Count of commits'
-                                },
-                                tooltip: {},
-                                legend: {
-                                    data: ['count']
-                                },
-                                xAxis: {
-                                    data: ["OrangeX4", "Team Two", "Team Three", "Team Four", "Team Five", "Team Six"],
-                                    axisLabel:{
-                                        interval:0  //类别标签全显
-                                    }
-                                },
-                                yAxis: {},
-                                series: [{
-                                    name: 'count',
-                                    type: 'bar',
-                                    data: [countOfCommits, 20, 36, 10, 10, 20]
-                                }]
-                            }}
-                            style={{height: '400px', width: '50%'}}
-                            notMerge={true}
-                            lazyUpdate={true}
-                            theme={"theme_name"}
-                            // Lamdba表达式
-                            onChartReady={() => { }} />
+                        {/* 我在这里使用了 Charts, 传入我获取到的 count, 让前端和数据可视化分离开来 */}
+                        <Charts count={countOfCommits} />
                     </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>

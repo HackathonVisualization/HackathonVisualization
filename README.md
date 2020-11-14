@@ -56,6 +56,8 @@ yarn build
 
 * public: 用于存放网页静态文件, 比如网页图标, 网页标题啥的
 * src: 代码存放主要位置
+  * **component: 用于存放可视化控件的主要文件夹**
+    * Charts.tsx: 其中的一个控件示例
   * App.css: 项目css代码的主要位置
   * **App.tsx: 项目主要代码, 例如界面的渲染, Echarts的主要内容啥的**
   * **utils.ts: 通过Github API获取数据的函数库**
@@ -102,17 +104,15 @@ yarn build
 
 主要任务就是使用 Echarts 将数据进行可视化.
 
-主要工作在 `App.tsx` 这个文件.
-
-虽然我是推荐再多分出一个专属的文件啦.
-你们自己分离出Component吧, 记得新建一个component文件夹 :)
+主要工作在 `component` 这个文件夹.
+通过 Echarts 数据可视化添加Component.
 
 **需要了解的知识:**
 
 * [HTML](https://www.runoob.com/html/html-basic.html)
 * [Javascript](https://www.runoob.com/js/js-tutorial.html)
 * [CSS](https://www.runoob.com/css/css-tutorial.html)
-* [稍微了解一点React](https://zh-hans.reactjs.org/)
+* [React](https://zh-hans.reactjs.org/)
 * [稍微了解一点Typescript](https://www.tslang.cn/docs/handbook/typescript-in-5-minutes.html)
 * [Echarts](https://echarts.apache.org/zh/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts)
 * [echarts-for-react](https://github.com/hustcc/echarts-for-react)

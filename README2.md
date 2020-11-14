@@ -1,4 +1,6 @@
-# 我初始化该项目的过程
+# OrangeX4初始化该项目过程记录
+
+仅供参考.
 
 ## 安装环境
 
@@ -40,3 +42,24 @@ yarn add antd
 #### 源代码加入布局
 
 略, 详见 `src/App.tsx`
+
+#### 优化布局
+
+文档参考:
+
+[https://ant.design/components/layout-cn/](https://ant.design/components/layout-cn/)
+
+### 添加Echarts
+
+#### 命令行添加
+
+```bash
+yarn add echarts
+yarn add echarts-for-react
+```
+
+#### 加入Echarts
+
+文档详见: 
+
+[https://github.com/hustcc/echarts-for-react](https://github.com/hustcc/echarts-for-react)

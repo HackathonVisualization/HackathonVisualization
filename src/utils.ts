@@ -1,3 +1,5 @@
+type Dict = { [key: string]: number }
+
 // Ajax 中的GET, 同理还可以写出POST函数
 export function get(url: string, callback: (res: any) => void) {
     const xhr = new XMLHttpRequest()
@@ -11,9 +13,34 @@ export function get(url: string, callback: (res: any) => void) {
     }
 }
 
-export function getCountOfCommits(team: string, repo: string, callback: (count: number) => void) {
+export function getCountOfCommits(team: string, repo: string, callback: (count: Dict) => void) {
+    // 获取队伍的commit情况，返回值为一个字典，包含队伍所有成员的名称和他们的提交数量
     // Callback 函数和 Lambda表达式语法, 这里其实可以不用回调, 用Promise, 但是就不增加学习成本了
     get(`https://api.github.com/repos/${team}/${repo}/contributors`, (res) => {
-        callback(res[0].contributions)
+
+        const team_contri: Dict = {};
+        var sum = 0
+        for(var i=0; i<res.length;i++)
+        {
+            team_contri[res[i].login] = res[i].contributions;
+            sum = sum + res[i].contributions;
+        }
+        team_contri['sum'] = sum;
+        callback(team_contri)
     })
+}
+
+export function getLanguagesDistribution(team: string, repo: string, callback: (languages: Dict) => void){
+    // 获取队伍目前项目的代码组成，返回值为一个字典，包含各种语言及其的代码行数，sum对应代码总量。
+    get(`https://api.github.com/repos/${team}/${repo}/languages`, (res) => {
+
+        var sum = 0
+        var value
+        for(value in res)
+        {
+            sum = sum + res[value];
+        }
+        res['sum'] = sum;
+        callback(res)
+    })    
 }

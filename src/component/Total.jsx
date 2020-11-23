@@ -6,9 +6,9 @@ class Total extends React.Component {
     return (
       <div>
         <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Total</Breadcrumb.Item>
+          <Breadcrumb.Item>总览</Breadcrumb.Item>
         </Breadcrumb>
-        {/* TODO */}
+        {/* TODO： Add Chart here */}
       </div>
     );
   }

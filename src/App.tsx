@@ -10,6 +10,7 @@ import Charts from './component/Charts'
 // 引入utils文件, 取得获取数据的"伪"后端函数库
 import { getCountOfCommits } from './utils'
 import { getLanguagesDistribution } from './utils'
+import { getTheLastCommitTime } from './utils'
 
 // 添加css文件, css文件里又引入了antd的css
 import './App.css'

@@ -1,11 +1,13 @@
 @import '~antd/dist/antd.css';
-
 .logo {
-    height: 32px;
-    margin: 16px;
-    background: rgba(255, 255, 255, 0.3);
+  height: 32px;
+  margin: 16px;
 }
 
-.site-layout .site-layout-background {
-    background: #fff;
+.sitename {
+  font-size: 17px;
+  font-weight: 1000;
+  cursor: pointer;
+  height: 32px;
+  margin: 16px;
 }

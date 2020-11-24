@@ -2,7 +2,15 @@
 import React from 'react'
 
 // 添加antd库, 用于承载echarts, 这个是引入的语法, 详见nodejs的文档
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Breadcrumb } from 'antd'
+
+// 引入名为 Charts 的 Component, 这是数据可视化的主要工作
+import Charts from './component/Charts'
+
+// 引入utils文件, 取得获取数据的"伪"后端函数库
+import { getCountOfCommits } from './utils'
+import { getLanguagesDistribution } from './utils'
+import { getTheLastCommitTime } from './utils'
 
 // 添加css文件, css文件里又引入了antd的css
 import './App.css'

@@ -19,7 +19,7 @@ function Charts(props: Props) {
                     data: ['count']
                 },
                 xAxis: {
-                    data: ["OrangeX4", "Team Two", "Team Three", "Team Four", "Team Five", "Team Six"],
+                    data: ["Name", "Team Two", "Team Three", "Team Four", "Team Five", "Team Six"],
                     axisLabel: {
                         interval: 0  //类别标签全显
                     }
@@ -35,7 +35,7 @@ function Charts(props: Props) {
             notMerge={true}
             lazyUpdate={true}
             theme={"theme_name"}
-            // Lamdba表达式
+            // Lambda表达式
             onChartReady={() => { }} />
 
     )

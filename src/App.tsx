@@ -12,6 +12,10 @@ import { getCountOfCommits } from './utils'
 import { getLanguagesDistribution } from './utils'
 import { getTheLastCommitTime } from './utils'
 
+// 参赛选手的数据, 队名, 仓库名, 成员名, 之后只需要将数据写在data.json就好
+// data的数据可以直接调用, 如 data[0].team
+import data from './data.json'
+
 // 添加css文件, css文件里又引入了antd的css
 import './App.css'
 

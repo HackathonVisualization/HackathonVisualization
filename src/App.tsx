@@ -60,12 +60,18 @@ function App() {
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         {/* 内容路由 */}
-                        <Route exact path="/" component={Total} />
-                        <Route exact path="/team" component={Teams} />
-                        <Route path="/team/:id" component={TeamShow} />
+                        <Route exact path="/" component={() => {
+                            return <Total />
+                        }} />
+                        <Route exact path="/team" component={() => {
+                            return <Teams />
+                        }} />
+                        <Route path="/team/:id" component={(props: any) => {
+                            return <TeamShow id={props.match.params.id}/>
+                        }} />
 
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Hackathon 2020 East China ©2020</Footer>
+                    <Footer style={{ textAlign: 'center' }}>Hackathon 2020 East China  ©2020</Footer>
                 </Layout>
             </Layout>
         </Router>

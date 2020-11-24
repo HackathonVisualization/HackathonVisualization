@@ -3,11 +3,7 @@ import { Breadcrumb } from 'antd'
 import { Link } from 'react-router-dom';
 
 interface Props {
-    match: {
-        params: {
-            [name: string]: string
-        }
-    }
+    id: string
 }
 
 function TeamShow(props: Props) {
@@ -17,7 +13,7 @@ function TeamShow(props: Props) {
                 <Breadcrumb.Item>
                     <Link to="/team">所有队伍</Link>
                 </Breadcrumb.Item>
-                <Breadcrumb.Item>{props.match.params.id}</Breadcrumb.Item>
+                <Breadcrumb.Item>{props.id}</Breadcrumb.Item>
             </Breadcrumb>
             {/* TODO： Add Chart here */}
         </div>

@@ -8,7 +8,7 @@ interface Props {
 
 function TeamShow(props: Props) {
     return (
-        <div>
+        <div style={{ height: '100%'}}>
             <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>
                     <Link to="/team">所有队伍</Link>

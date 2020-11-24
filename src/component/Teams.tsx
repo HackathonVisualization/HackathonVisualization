@@ -7,7 +7,7 @@ interface Props {
 
 function Teams(props: Props) {
     return (
-        <div>
+        <div style={{ height: '100%'}}>
             <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>所有队伍</Breadcrumb.Item>
             </Breadcrumb>

@@ -44,3 +44,13 @@ export function getLanguagesDistribution(team: string, repo: string, callback: (
         callback(res)
     })    
 }
+
+export function getTheLastCommitTime(team: string, repo: string, callback: (lastCommitTime: string) => void){
+    // 获取特定队伍队伍最后一次提交时间
+    get(`https://api.github.com/repos/${team}/${repo}/commits`, (res)=>{
+        var time_str = res[0]['commit']['committer']['date'];
+        var lastCommitTime = time_str.slice(-9, -1);
+        callback(lastCommitTime)
+    })
+}
+

@@ -9,10 +9,12 @@ interface Props {
 
 function TeamCard(props: Props) {
     return (
-        <Card title={props.team} bordered={false} style={{ width: 300 }}>
-            <p>{props.members.join(', ')}</p>
-            <Link to={`/team/${props.team}`} />
-        </Card>
+        <Link to={`/team/${props.team}`}>
+            <Card hoverable title={props.team} bordered={false} style={{ width: '100%' }}>
+                <p>{props.members.join(', ')}</p>
+
+            </Card>
+        </Link>
     )
 }
 

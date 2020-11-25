@@ -1,5 +1,5 @@
 import React from 'react'
-import { Breadcrumb } from 'antd'
+import { Breadcrumb, Col, Row } from 'antd'
 import TeamCard from './TeamCard';
 
 interface Props {
@@ -18,7 +18,9 @@ function Teams(props: Props) {
             <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>所有队伍</Breadcrumb.Item>
             </Breadcrumb>
-            {props.data.map((value) => <TeamCard team={value.team} members={Object.values(value.member)} />)}
+            <Row gutter={[16, 16]}>
+                {props.data.map((value) => <Col span={6}><TeamCard team={value.team} members={Object.values(value.member)} /></Col>)}
+            </Row>
         </div>
     )
 }

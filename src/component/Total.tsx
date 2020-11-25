@@ -3,7 +3,7 @@ import { Breadcrumb } from 'antd'
 import Charts from './Charts'
 
 interface Props {
-    teams: string[],
+    teams: string[]
     commits: number[]
 }
 

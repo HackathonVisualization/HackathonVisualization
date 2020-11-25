@@ -3,7 +3,7 @@ import React from 'react'
 import ReactEcharts from "echarts-for-react"
 
 interface Props {
-    teams: string[],
+    teams: string[]
     commits: number[]
 }
 

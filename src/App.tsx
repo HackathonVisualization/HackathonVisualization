@@ -34,25 +34,35 @@ import {
 
 const { Header, Content, Footer, Sider } = Layout
 
-// interface TeamData {
-//     team: string,
-//     commits: number,
-//     members: 
-// }
+interface Data {
+    team: string
+    repo: string
+    member: {
+        [name: string]: string
+    }
+}
+
+interface CommitsData {
+    [team: string]: { [member: string]: number }
+}
 
 function App() {
 
     const [teams, setTeams] = useState([] as string[])
     const [commits, setCommits] = useState([] as number[])
-    const [teamsData, setTeamsData] = useState({})
+    const [commitsData, setCommitsData] = useState({} as CommitsData)
 
     // 初始化, 获取相关的数据
     useEffect(() => {
+        setTeams([])
+        setCommits([])
+        setCommitsData({})
         data.forEach(one => {
             getCountOfCommits(one.repo, (count) => {
                 // 踩坑, 如果用到本身的值的话, 应该要用lambda函数来获取原来的值
                 setTeams((teams) => [...teams, one.team])
                 setCommits((commits) => [...commits, count['sum']])
+                setCommitsData((teamsData) => { return { ...teamsData, [one.team]: count } })
             })
         })
     }, [])
@@ -86,7 +96,7 @@ function App() {
                             return <Total teams={teams} commits={commits} />
                         }} />
                         <Route exact path="/team" component={() => {
-                            return <Teams />
+                            return <Teams data={data as Data[]} />
                         }} />
                         <Route path="/team/:id" component={(props: any) => {
                             return <TeamShow id={props.match.params.id} />

@@ -3,42 +3,43 @@ import React from 'react'
 import ReactEcharts from "echarts-for-react"
 
 interface Props {
-    count: number
+    teams: string[]
+    commits: number[]
 }
 
-function Charts(props: Props) {
+function TotalCharts(props: Props) {
 
     return (
         <ReactEcharts
             option={{
                 title: {
-                    text: 'Count of commits'
+                    text: '各队伍提交数'
                 },
                 tooltip: {},
                 legend: {
-                    data: ['count']
+                    data: ['commits']
                 },
                 xAxis: {
-                    data: ["OrangeX4", "Team Two", "Team Three", "Team Four", "Team Five", "Team Six"],
+                    data: props.teams,
                     axisLabel: {
                         interval: 0  //类别标签全显
                     }
                 },
                 yAxis: {},
                 series: [{
-                    name: 'count',
+                    name: 'commits',
                     type: 'bar',
-                    data: [props.count, 20, 36, 10, 10, 20]
+                    data: props.commits
                 }]
             }}
-            style={{ height: '400px', width: '50%' }}
+            style={{ height: '100%', width: '100%'}}
             notMerge={true}
             lazyUpdate={true}
             theme={"theme_name"}
-            // Lamdba表达式
+            // Lambda表达式
             onChartReady={() => { }} />
 
     )
 }
 
-export default Charts
+export default TotalCharts

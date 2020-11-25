@@ -9,8 +9,6 @@ import { Layout, Menu } from 'antd'
 
 // 引入utils文件, 取得获取数据的"伪"后端函数库
 import { getCountOfCommits } from './utils'
-import { getLanguagesDistribution } from './utils'
-import { getTheLastCommitTime } from './utils'
 
 // 参赛选手的数据, 队名, 仓库名, 成员名, 之后只需要将数据写在data.json就好
 // data的数据可以直接调用, 如 data[0].team
@@ -58,14 +56,29 @@ function App() {
         setCommits([])
         setCommitsData({})
         data.forEach(one => {
-            getCountOfCommits(one.repo, (count) => {
+            getCountOfCommits(one.repo, (count, sum) => {
                 // 踩坑, 如果用到本身的值的话, 应该要用lambda函数来获取原来的值
                 setTeams((teams) => [...teams, one.team])
-                setCommits((commits) => [...commits, count['sum']])
+                setCommits((commits) => [...commits, sum])
                 setCommitsData((teamsData) => { return { ...teamsData, [one.team]: count } })
             })
         })
     }, [])
+
+    function getTeamData(team: string) {
+        let teamData = {
+            team: '',
+            repo: '',
+            member: {} as { [member: string]: string },
+            commits: {} as { [member: string]: number }
+        }
+        data.forEach((value) => {
+            if(team === value.team) {
+                teamData = {...value as Data, commits: commitsData[team]}
+            }
+        })
+        return teamData
+    }
 
     return (
         <Router>
@@ -98,8 +111,8 @@ function App() {
                         <Route exact path="/team" component={() => {
                             return <Teams data={data as Data[]} />
                         }} />
-                        <Route path="/team/:id" component={(props: any) => {
-                            return <TeamShow id={props.match.params.id} />
+                        <Route path="/team/:team" component={(props: any) => {
+                            return <TeamShow {...getTeamData(props.match.params.team)} />
                         }} />
 
                     </Content>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Breadcrumb } from 'antd'
-import Charts from './Charts'
+import TotalCharts from './TotalCharts'
 
 interface Props {
     teams: string[]
@@ -13,7 +13,7 @@ function Total(props: Props) {
             <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>总览</Breadcrumb.Item>
             </Breadcrumb>
-            <Charts teams={props.teams} commits={props.commits}/>
+            <TotalCharts teams={props.teams} commits={props.commits}/>
         </div>
     )
 }

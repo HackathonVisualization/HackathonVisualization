@@ -7,7 +7,7 @@ interface Props {
     commits: number[]
 }
 
-function Charts(props: Props) {
+function TotalCharts(props: Props) {
 
     return (
         <ReactEcharts
@@ -42,4 +42,4 @@ function Charts(props: Props) {
     )
 }
 
-export default Charts
+export default TotalCharts

@@ -23,7 +23,7 @@ function TeamShow(props: Props) {
         getCountOfCommits(props.repo, (count) => setCommits(count))
         getTheLastCommitTime(props.repo, (time) => setLastCommitTime(time))
         getLanguagesDistribution(props.repo, (lan) => setLanguages(lan))
-    }, [])
+    }, [props.repo])
 
     return (
         <div style={{ height: '100%' }}>

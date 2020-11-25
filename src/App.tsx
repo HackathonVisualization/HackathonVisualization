@@ -102,6 +102,7 @@ function App() {
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{ padding: 0, background: "white" }}>
+                        <p style={{fontWeight: 'bold', paddingLeft: '20px', fontSize: '18px'}}>Hackathon 2020 EC 数据展示</p>
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         {/* 内容路由 */}

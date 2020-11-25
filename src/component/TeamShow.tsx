@@ -38,7 +38,7 @@ function TeamShow(props: Props) {
             <a href={`https://github.com/${props.repo}`}>GitHub 地址</a>
             <Divider />
             <TeamCharts
-                commits={Object.keys(commits).map((key) => { return { name: key, value: commits[key] } })}
+                commits={Object.keys(commits).map((key) => { return { name: props.member[key] ? props.member[key] : key, value: commits[key] } })}
                 languages={Object.keys(languages).map((key) => { return { name: key, value: languages[key] } })} />
         </div>
     )

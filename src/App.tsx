@@ -32,13 +32,13 @@ import {
 
 const { Header, Content, Footer, Sider } = Layout
 
-interface Data {
-    team: string
-    repo: string
-    member: {
-        [name: string]: string
-    }
-}
+// interface Data {
+//     team: string
+//     repo: string
+//     member: {
+//         [name: string]: string
+//     }
+// }
 
 interface CommitsData {
     [team: string]: { [member: string]: number }
@@ -74,7 +74,7 @@ function App() {
         }
         data.forEach((value) => {
             if(team === value.team) {
-                teamData = {...value as Data, commits: commitsData[team]}
+                teamData = {...value as any, commits: commitsData[team]}
             }
         })
         return teamData
@@ -110,7 +110,7 @@ function App() {
                             return <Total teams={teams} commits={commits} />
                         }} />
                         <Route exact path="/team" component={() => {
-                            return <Teams data={data as Data[]} />
+                            return <Teams data={data as any} />
                         }} />
                         <Route path="/team/:team" component={(props: any) => {
                             return <TeamShow {...getTeamData(props.match.params.team)} />

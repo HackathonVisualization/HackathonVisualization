@@ -3,7 +3,8 @@ type Dict = { [key: string]: number }
 // Ajax 中的GET, 同理还可以写出POST函数
 export function get(url: string, callback: (res: any) => void) {
     const xhr = new XMLHttpRequest()
-    xhr.open('GET', url, true, 'e5333844037dbf3528ed', 'a6d51d3b87c0878d1dc8570cc179af833fa6eea6')
+    let my_token = '?&access_token=bd2e1933d7071f2c7d1d3f408c515044644abf99'
+    xhr.open('GET', (url + my_token), true)
     xhr.setRequestHeader('content-type', 'application/json')
     xhr.send()
     xhr.onreadystatechange = () => {
@@ -46,9 +47,17 @@ export function getLanguagesDistribution(repo: string, callback: (languages: Dic
 export function getTheLastCommitTime(repo: string, callback: (lastCommitTime: string) => void){
     // 获取特定队伍队伍最后一次提交时间
     get(`https://api.github.com/repos/${repo}/commits`, (res)=>{
-        let time_str = res[0]['commit']['committer']['date'];
-        let lastCommitTime = time_str.slice(-9, -1);
-        callback(lastCommitTime)
+        let date = new Date(Date.parse(res[0]['commit']['committer']['date']));
+        let m = date.getMonth() + 1;  
+        let m_str = m < 10 ? ('0' + m) : m;  
+        let d = date.getDate();  
+        let d_str = d < 10 ? ('0' + d) : d; 
+        let h = date.getHours();  
+        let minute = date.getMinutes();  
+        let minute_str = minute < 10 ? ('0' + minute) : minute; 
+        let second= date.getSeconds();  
+        let second_str = minute < 10 ? ('0' + second) : second;
+        callback(m_str + '月' + d_str+'日 '+h+':'+minute_str+':'+ second_str)
     })
 }
 

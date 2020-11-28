@@ -22,6 +22,7 @@ function TotalCharts(props: Props) {
                 xAxis: {
                     data: props.teams,
                     axisLabel: {
+                        rotate: -30, // 斜体显示队伍名称
                         interval: 0  //类别标签全显
                     }
                 },
